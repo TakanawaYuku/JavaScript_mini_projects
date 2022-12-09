@@ -2,26 +2,40 @@ const cols = document.querySelectorAll('.col');
 
 document.addEventListener('keydown', (event) => {
     if (event.code.toLowerCase() === 'space') {
-        setRandomColors()
+        setRandomColors();
     };
 });
 
 
-function generateRandomColor() {
-    //RGB
-    //#FF0000
-    //#00FF00
-    //#0000FF
+document.addEventListener('click', event => {
+    const type = event.target.dataset.type
 
-    const hexCodes = '01234567879ABCDEF';
+    if (type === 'lock') {
+        const node = event.target.tagName.toLowerCase() === 'i' ? event.target : event.target.children[0];
 
-    let color = '';
-    for (let i = 0; i < 6; i++) {
-        color += hexCodes[Math.floor(Math.random() * hexCodes.length)];
+
+        node.classList.toggle('fa-lock-open');
+        node.classList.toggle('fa-lock');
     };
+});
 
-    return '#' + color
-};
+
+
+// function generateRandomColor() {
+//     //RGB
+//     //#FF0000
+//     //#00FF00
+//     //#0000FF
+
+//     const hexCodes = '01234567879ABCDEF';
+
+//     let color = '';
+//     for (let i = 0; i < 6; i++) {
+//         color += hexCodes[Math.floor(Math.random() * hexCodes.length)];
+//     };
+
+//     return '#' + color
+// };
 
 
 
