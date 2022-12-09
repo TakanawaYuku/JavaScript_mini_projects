@@ -22,7 +22,7 @@ function generateRandomColor() {
 function setRandomColors() {
     cols.forEach(col => {
         const text_title = col.querySelector('h2')
-        const color = generateRandomColor()
+        const color = chroma.random()
 
 
         text_title.textContent = color
