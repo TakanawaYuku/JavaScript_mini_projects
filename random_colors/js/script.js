@@ -38,14 +38,21 @@ document.addEventListener('click', event => {
 //     return '#' + color
 // };
 
-
+function copyToClickBoard(text) {
+    return navigator.clipboard.writeText(text)
+}
 
 function setRandomColors() {
     cols.forEach(col => {
+        const isLocked = col.querySelector('i').classList.contains('fa-lock');
         const text = col.querySelector('h2');
         const button = col.querySelector('button');
         const color = chroma.random();
 
+
+        if (isLocked) {
+            return
+        }
 
         text.textContent = color;
         col.style.background = color;
