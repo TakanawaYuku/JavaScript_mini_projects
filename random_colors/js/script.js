@@ -17,6 +17,8 @@ document.addEventListener('click', event => {
 
         node.classList.toggle('fa-lock-open');
         node.classList.toggle('fa-lock');
+    } else if (type === 'copy') {
+        copyToClickBoard(event.target.textContent)
     };
 });
 
@@ -43,6 +45,7 @@ function copyToClickBoard(text) {
 }
 
 function setRandomColors() {
+    const colors = []
     cols.forEach(col => {
         const isLocked = col.querySelector('i').classList.contains('fa-lock');
         const text = col.querySelector('h2');
@@ -68,5 +71,9 @@ function setTextColor(text, color) {
     text.style.color = luminance > 0.5 ? 'black' : 'white';
 };
 
+
+function updateColorsHash(color=[]) {
+    document.location.hash = color.toString()
+};
 
 setRandomColors();
