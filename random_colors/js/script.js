@@ -54,8 +54,11 @@ function setRandomColors() {
 
 
         if (isLocked) {
+            colors.push(text.textContent)
             return
         }
+
+        colors.push(color);
 
         text.textContent = color;
         col.style.background = color;
@@ -63,6 +66,8 @@ function setRandomColors() {
         setTextColor(text,color);
         setTextColor(button,color);
     });
+
+    updateColorsHash(colors);
 };
 
 function setTextColor(text, color) {
@@ -72,8 +77,12 @@ function setTextColor(text, color) {
 };
 
 
-function updateColorsHash(color=[]) {
-    document.location.hash = color.toString()
+function updateColorsHash(colors=[]) {
+    document.location.hash = colors
+    .map((col) => {
+        return col.toString().substring(1)
+    })
+    .join('-')
 };
 
 setRandomColors();
