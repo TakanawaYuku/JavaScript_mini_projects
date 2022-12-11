@@ -82,7 +82,19 @@ function updateColorsHash(colors=[]) {
     .map((col) => {
         return col.toString().substring(1)
     })
-    .join('-')
+    .join('-');
 };
+
+
+function getColorsFromHash() {
+    if (document.location.hash.length > 1) {
+        document.location.hash
+        .substring(1)
+        .split('-')
+        .map(color => '#' + color)
+    }
+    return []
+};
+
 
 setRandomColors();
